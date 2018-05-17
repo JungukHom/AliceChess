@@ -1,0 +1,2 @@
+F:\GitHub\AliceChess\Project\AliceChess\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+F:\GitHub\AliceChess\Project\AliceChess\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
