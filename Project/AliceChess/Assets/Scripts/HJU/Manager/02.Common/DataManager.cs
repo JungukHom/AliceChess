@@ -16,6 +16,12 @@ namespace Utility
             public static readonly float delayTime = 3.0f;
         }
 
+        public struct Tag
+        {
+            public static readonly string chessPiece = "ChessPiece";
+            public static readonly string ground = "Ground";
+        }
+
         public struct ChessBoard
         {
             public static readonly Vector3 position = new Vector3(0.21f, ChessBoardInfo.startHeight, 0.21f);

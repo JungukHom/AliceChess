@@ -7,9 +7,9 @@ namespace LSJ
     public class ChessPiece : MonoBehaviour
     {
         public float walkSpeed = 0.1f;
-        public float stopDistance = 0.1f;
+        public float stopDistance = 0.12f;
 
-        public Vector3 desPos = new Vector3(0, 0, 0.2f);
+        public Vector3 destinationPosition = new Vector3(0, 0, 0.2f);
 
         new private Transform transform;
 
@@ -17,7 +17,7 @@ namespace LSJ
         private readonly string isAttack = "isAttack";
         private readonly string isDie = "isDie";
 
-        Animator anim;
+        Animator animator;
 
         private void Awake()
         {
@@ -28,41 +28,41 @@ namespace LSJ
         {
             Debug.Log($"StartMove() / hasEnemy : {hasEnemy}");
 
-            anim.SetBool("isWalk", true);
-            anim.speed = 1.5f;
+            animator.SetBool("isWalk", true);
+            animator.speed = 1.5f;
 
-            Vector3 dir = desPos - transform.position;
+            Vector3 dir = destinationPosition - transform.position;
 
             if (hasEnemy)
             {
-                while(Vector3.Distance(transform.position, desPos / 2) > stopDistance)
+                while(Vector3.Distance(transform.position, destinationPosition / 2) > stopDistance)
                 {
                     transform.position += walkSpeed * dir.normalized * Time.deltaTime;
 
                     yield return new WaitForEndOfFrame();
                 }
 
-                anim.SetBool("isAttack", true);
+                animator.SetBool("isAttack", true);
                 yield return new WaitForEndOfFrame();
 
-                anim.SetBool("isAttack", false);
+                animator.SetBool("isAttack", false);
 
-                if(transform.position == desPos)
+                if(transform.position == destinationPosition)
                 {
-                    anim.SetBool("isWalk", false);
+                    animator.SetBool("isWalk", false);
                 }
             }
             else
             {
-                while (Vector3.Distance(transform.position, desPos) > stopDistance)
+                while (Vector3.Distance(transform.position, destinationPosition) > stopDistance)
                 {
                     transform.position += walkSpeed * dir.normalized * Time.deltaTime;
 
                     yield return new WaitForEndOfFrame();
                 }
 
-                transform.position = desPos;
-                anim.SetBool("isWalk", false);
+                transform.position = destinationPosition;
+                animator.SetBool("isWalk", false);
             }
         }
 

@@ -10,7 +10,6 @@ namespace Manager
         public DataManager.Team MyColor { get; set; }
         // variables
         private float rayLength = 1.0f;
-        private string chessPiece = "ChessPiece";
 
         // components
         private ChessPieceState currentObject = null;
@@ -34,10 +33,14 @@ namespace Manager
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, rayLength))
                 {
-                    
-                    if (hit.collider.gameObject.tag == chessPiece)
+                    if (hit.collider.gameObject.tag == DataManager.Tag.chessPiece)
                     {
                         currentObject = hit.collider.gameObject.GetComponent<ChessPieceState>();
+                    }
+
+                    if (hit.collider.gameObject.tag == DataManager.Tag.ground)
+                    {
+                        Debug.Log("ground");
                     }
                 }
             }
