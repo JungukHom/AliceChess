@@ -13,9 +13,9 @@ namespace LSJ
 
         new private Transform transform;
 
-        private readonly string isWalk = "isWalk";
-        private readonly string isAttack = "isAttack";
-        private readonly string isDie = "isDie";
+        private const string isWalk = "isWalk";
+        private const string isAttack = "isAttack";
+        private const string isDie = "isDie";
 
         Animator animator;
 
