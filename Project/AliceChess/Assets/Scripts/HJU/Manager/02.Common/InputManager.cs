@@ -43,8 +43,13 @@ namespace Manager
                         Debug.Log("ground");
                     }
                 }
+                else
+                {
+                    // do nothing
+                }
             }
-            else if (Input.GetMouseButtonUp(0))
+
+            if (Input.GetMouseButtonUp(0))
             {
                 if (currentObject)
                 {
