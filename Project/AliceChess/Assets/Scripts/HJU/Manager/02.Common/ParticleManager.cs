@@ -32,7 +32,7 @@ namespace Manager
                 for (int x = 0; x < 8; x++)
                 {
                     position = new Vector3(x * distance, chessBoardStartHeight, z * distance);
-                    GameObject particle = Instantiate((GameObject)Resources.Load("Prefab"), position, rotation, parent.transform);
+                    GameObject particle = Instantiate(this.particle, position, rotation, parent.transform); // (GameObject)Resources.Load("Prefab")
                     particle.SetActive(false);
                     particles[x, z] = particle;
                     // particles[x, z].Stop();
@@ -40,6 +40,7 @@ namespace Manager
             }
         }
 
+        // todo : object pool 방식으로 최적화하기
         public void ReSet()
         {
             for (int z = 0; z < 8; z++)

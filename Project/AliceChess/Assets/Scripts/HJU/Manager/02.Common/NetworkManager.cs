@@ -13,7 +13,7 @@ namespace Network
         private static readonly string VERSION = "v1.0";
 
         private TypedLobby defaultLobby;
-        private PhotonObject photonObject;
+        // private PhotonObject photonObject;
         private PhotonInstantiateManager photonInstantiateManager;
         private ParticleManager particleManager;
 
@@ -25,7 +25,7 @@ namespace Network
             PhotonNetwork.autoJoinLobby = false;
             PhotonNetwork.automaticallySyncScene = true;
 
-            photonObject = PhotonObject.GetInstance();
+            // photonObject = PhotonObject.GetInstance();
             photonInstantiateManager = GetComponent<PhotonInstantiateManager>();
             particleManager = GetComponent<ParticleManager>();
         }

@@ -100,7 +100,7 @@ namespace Manager
                         // obj.GetComponent<Transform>().localScale = scale;
                         obj.name = board[x, z].PieceName.ToString();
                         // obj.AddComponent<ObjectDragger>();
-                        Transform tr = obj.GetComponent<Transform>();
+                        // Transform tr = obj.GetComponent<Transform>();
                         ChessPieceState state = obj.GetComponent<ChessPieceState>();
                         // tr.LookAt(tr.position + new Vector3(0, 0, 1));
                         state.Initialize(new Vector3(x * distance, 0, z * distance), team, pieceName, DataManager.WhitePiece[i++]);
@@ -136,7 +136,7 @@ namespace Manager
                         // obj.GetComponent<Transform>().localScale = scale;
                         obj.name = board[x, z].PieceName.ToString();
                         // obj.AddComponent<ObjectDragger>();
-                        Transform tr = obj.GetComponent<Transform>();
+                        // Transform tr = obj.GetComponent<Transform>();
                         ChessPieceState state = obj.GetComponent<ChessPieceState>();
                         // tr.LookAt(tr.position + new Vector3(0, 0, -1));
                         state.Initialize(new Vector3(x * distance, 0, z * distance), team, pieceName, DataManager.BlackPiece[i++]);

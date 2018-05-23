@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Utility;
+using UnityEngine;
 
 namespace Manager
 {
@@ -30,7 +31,7 @@ namespace Manager
 
         public Vector3 GetPosition(float x, float y, float z)
         {
-            return new Vector3(GetX(x), chessBoardStartHeight, GetZ(z));
+            return new Vector3(GetX(x), DataManager.ChessBoardInfo.startHeight, GetZ(z));
         }
 
         private float GetX(float position)
