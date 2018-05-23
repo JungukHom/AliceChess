@@ -8,67 +8,77 @@ namespace Manager
     {
         // properties
         public DataManager.Team MyColor { get; set; }
+
         // variables
         private float rayLength = 1.0f;
 
         // components
         private ChessPieceState currentObject = null;
 
-        /*
-        public static DataManager.Team Team { get; private set; }
-        public static DataManager.PieceName PieceName { get; private set; }
-        public static DataManager.PieceDetail PieceDetail { get; private set; }
-        */
-
         private void Start()
         {
             MyColor = DataManager.MyColor;
         }
 
-        void Update()
+        private void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, rayLength))
-                {
-                    if (hit.collider.gameObject.tag == DataManager.Tag.chessPiece)
-                    {
-                        currentObject = hit.collider.gameObject.GetComponent<ChessPieceState>();
-                    }
-
-                    if (hit.collider.gameObject.tag == DataManager.Tag.ground)
-                    {
-                        Debug.Log("ground");
-                    }
-                }
-                else
-                {
-                    // do nothing
-                }
+                Debug.Log(OnDown());
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                if (currentObject)
-                {
-                    #region debug
-                    Debug.Log($"PieceDetail : {currentObject.PieceDetail}");
-                    Debug.Log($"PieceName : {currentObject.PieceName}");
-                    Debug.Log($"Team : {currentObject.Team}");
-                    #endregion
-                    // todo : edit new List<Vector2>()
-                    // GetOrCreateManager<ParticleManager>().Show(new List<Vector2>());
-                    GetOrCreateManager<ParticleManager>().Show(GetOrCreateManager<AlgorithmManager>().GetList(currentObject, MyColor));
-                }
-                else
-                {
-                    Debug.Log($"currentObject null.");
-                    GetOrCreateManager<ParticleManager>().ReSet();
-                }
+                OnUp();
             }
         }
+
+        private GameObject OnDown()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit rayHit;
+            if (Physics.Raycast(ray, out rayHit, rayLength))
+            {
+                if (rayHit.collider.gameObject.tag == DataManager.Tag.chessPiece)
+                {
+                    currentObject = rayHit.collider.gameObject.GetComponent<ChessPieceState>();
+                }
+
+                if (rayHit.collider.gameObject.tag == DataManager.Tag.ground)
+                {
+                    Debug.Log("ground");
+                }
+
+                return rayHit.transform.gameObject;
+            }
+            else
+            {
+                return null;
+                // do nothing
+            }
+        }
+
+        private void OnUp()
+        {
+            if (currentObject)
+            {
+                #region debug
+                Debug.Log($"PieceDetail : {currentObject.PieceDetail}");
+                Debug.Log($"PieceName : {currentObject.PieceName}");
+                Debug.Log($"Team : {currentObject.Team}");
+                #endregion
+                // todo : edit new List<Vector2>()
+                // GetOrCreateManager<ParticleManager>().Show(new List<Vector2>());
+                GetOrCreateManager<ParticleManager>().ReSet();
+                GetOrCreateManager<ParticleManager>().Show(GetOrCreateManager<AlgorithmManager>().GetList(currentObject, MyColor));
+            }
+            else
+            {
+                GetOrCreateManager<ParticleManager>().ReSet();
+            }
+        }
+
+        
     }
 
 }

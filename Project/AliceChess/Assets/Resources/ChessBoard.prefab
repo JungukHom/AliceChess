@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012986792146}
   - component: {fileID: 114754346623983524}
+  - component: {fileID: 65923416618894034}
   m_Layer: 0
   m_Name: ChessBoard
   m_TagString: Untagged
@@ -187,6 +188,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010420685720}
   m_Mesh: {fileID: 4300002, guid: c46a2a53be8b37640bf69647b314cae6, type: 3}
+--- !u!65 &65923416618894034
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011581524622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 0.6, z: 0.03}
+  m_Center: {x: 0, y: 0, z: -0.015}
 --- !u!114 &114754346623983524
 MonoBehaviour:
   m_ObjectHideFlags: 1

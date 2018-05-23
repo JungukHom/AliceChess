@@ -16,7 +16,7 @@ namespace Manager
 
         DataManager.Team currentTeam;
 
-        private void Start()
+        private void Awake()
         {
             boardManager = BoardStateManager.GetInstance();
         }

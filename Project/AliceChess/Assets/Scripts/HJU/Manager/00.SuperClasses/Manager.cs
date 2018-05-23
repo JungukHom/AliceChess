@@ -18,7 +18,7 @@ namespace Manager
             if (!component)
             {
                 Debug.Log("Component doesn't exist. Add manager component.");
-                component = GetOrCreateManager<T>(); // component = gameObject.AddComponent<T>();
+                component = gameObject.AddComponent<T>(); // component = GetOrCreateManager<T>();
 
                 if (!component)
                 {
