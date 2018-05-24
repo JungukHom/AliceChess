@@ -81,8 +81,6 @@
     <Compile Include="Assets\Scripts\HJU\Wrapper\PhotonObject.cs" />
     <Compile Include="Assets\Scripts\HJU\Wrapper\RPC.cs" />
     <Compile Include="Assets\Scripts\HJU\Wrapper\RPCTest.cs" />
-    <Compile Include="Assets\Scripts\LSJ\Client\Canvas\Login.cs" />
-    <Compile Include="Assets\Scripts\LSJ\Client\Canvas\Main.cs" />
     <Compile Include="Assets\Scripts\LSJ\Client\ChessPiece.cs" />
     <Compile Include="Assets\Utilitiies\PhotonNetwork\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\Utilitiies\PhotonNetwork\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
