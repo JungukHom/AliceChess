@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface IChessPiece
+public interface IChessPieceInfo
 {
     /*
     bool IsClicked { get; set; }
@@ -13,14 +13,16 @@ public interface IChessPiece
     PieceInfo PieceInfo { get; set; }
     */
    
+    /*
     void OnMouseDown();
     void OnMouseUp();
 
     void InitializePieceInfo(Team team, PieceInfo info);
+    */
 }
 
 public enum Team { WHITE, BLACK }
-public enum PieceInfo
+public enum Piece
 {
     King, Queen,
     Rook_L, Rook_R,

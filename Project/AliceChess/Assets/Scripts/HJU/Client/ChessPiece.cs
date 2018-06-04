@@ -9,7 +9,7 @@ namespace MainScene
     namespace HJU
     {
         [RequireComponent(typeof(CapsuleCollider))]
-        public class ChessPiece : MonoBehaviour, IChessPiece // MainScene.HJU.ChessPiece
+        public class ChessPiece : MonoBehaviour, IChessPieceInfo // MainScene.HJU.ChessPiece
         {
             #region IChessPiece Properties
             public bool IsClicked { get; set; }
@@ -17,7 +17,7 @@ namespace MainScene
             public Vector3 Position { get; set; }
             public Vector3 LerpedPosition { get; set; }
             public Team Team { get; set; }
-            public PieceInfo PieceInfo { get; set; }
+            public Piece PieceInfo { get; set; }
             #endregion
 
             #region Local Variables
@@ -45,7 +45,7 @@ namespace MainScene
 
             public void OnMouseUp() { }
 
-            public void InitializePieceInfo(Team team, PieceInfo info)
+            public void InitializePieceInfo(Team team, Piece info)
             {
                 Team = team;
                 PieceInfo = info;

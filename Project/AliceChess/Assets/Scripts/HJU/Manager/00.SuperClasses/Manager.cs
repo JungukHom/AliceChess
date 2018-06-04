@@ -1,4 +1,4 @@
-﻿using MyException;
+﻿using System;
 using UnityEngine;
 using UnityEngineInternal;
 
@@ -22,10 +22,36 @@ namespace Manager
 
                 if (!component)
                 {
-                    throw new InvalidClassException($"Can't find class inherits MonoBehaviour.");
+                    throw new Exception($"Can't find class inherits MonoBehaviour.Manager.");
                 }
             }
             return component;
+        }
+
+        public T GetManager<T>() where T : Manager
+        {
+            return GetOrCreateManager<T>();
+        }
+
+        /// <summary>
+        /// Get component in generics with string objectname.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectName"></param>
+        /// <returns></returns>
+        protected T FindComponent<T>(string objectName) where T : Component
+        {
+            return GameObject.Find(objectName).GetComponent<T>();
+        }
+
+        protected GameManager GetGameManager()
+        {
+            return GetComponent<GameManager>();
+        }
+
+        protected void DoNothing()
+        {
+            // do nothing
         }
     }
 }

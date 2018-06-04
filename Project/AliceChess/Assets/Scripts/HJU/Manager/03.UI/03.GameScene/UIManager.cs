@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameScene
+namespace Manager.GameScene
 {
-    public class UIManager : MonoBehaviour
+    public class UIManager : Manager
     {
 
         void Start()

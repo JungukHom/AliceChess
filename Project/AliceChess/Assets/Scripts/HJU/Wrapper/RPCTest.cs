@@ -19,8 +19,8 @@ public class RPCTest : Photon.MonoBehaviour
                 "RPC test message."
             );
             */
-            NetworkManager gm = GameObject.Find("GameManager").GetComponent<NetworkManager>();
-            gm.SendRPC("RPCTestMessage", PhotonTargets.All, false, "RPC test message.");
+            NetworkManager networkManager = GameObject.Find("GameManager").GetComponent<NetworkManager>();
+            networkManager.SendRPC("RPCTestMessage", PhotonTargets.All, false, "RPC test message.");
         }
     }
 }

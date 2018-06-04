@@ -1,18 +1,17 @@
 ﻿using UniRx;
 using Network;
-using Manager;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LoginScene
+namespace Manager.LoginScene
 {
-    public class UIManager : Manager.Manager
+    public class UIManager : Manager
     {
         private GameObject gameManager;
         private InputField playerName;
         private Button playButton;
 
-        public string GetPlayerName() => (playerName.text ?? $"NoName{Random.Range(0, 9999)}");
+        public string GetPlayerName() => (playerName.text ?? $"User:{Random.Range(0, 9999)}");
 
         private void Start()
         {
@@ -35,7 +34,7 @@ namespace LoginScene
                 .Subscribe(x =>
                 {
                     gameManager.GetComponent<NetworkManager>().JoinLobby();
-                    gameManager.GetComponent<SceneManager>().LoadScene(SceneManager.LobbyScene, 3.0f, 3.0f);
+                    gameManager.GetComponent<SceneManager>().LoadScene(SceneManager.SceneName.lobbyScene);
                 });
         }
     }

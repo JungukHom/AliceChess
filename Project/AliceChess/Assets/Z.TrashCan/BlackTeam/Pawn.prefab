@@ -2178,6 +2178,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents: []
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114965273817005114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2189,6 +2203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9778385bc59071b42be8f11682e40703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  information: 
 --- !u!137 &137440668010264044
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
