@@ -2,10 +2,19 @@
 using UnityEngine;
 using UnityEngineInternal;
 
+using Utility;
+
 namespace Manager
 {
     public class Manager : MonoBehaviour
     {
+        protected GameManager gameManager;
+
+        private void Awake()
+        {
+            gameManager = GameObject.FindGameObjectWithTag(Utility.DataManager.Tag.gameManager).GetComponent<GameManager>();
+        }
+
         /// <summary>
         /// Get or create Manager class.
         /// </summary>

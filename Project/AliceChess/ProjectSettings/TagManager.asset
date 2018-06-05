@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ChessPiece
   - PositionParticle
+  - GameManager
+  - UIManager
   layers:
   - Default
   - TransparentFX

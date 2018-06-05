@@ -12,5 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/02.Lobby.unity
     guid: 5f45dfe14c9949b4bb53f1bd6a2cedd9
   - enabled: 1
-    path: Assets/Scenes/03.Game.unity
+    path: Assets/Scenes/03.Main_PC.unity
     guid: 21f5d9e2e9a1c9a419bddd29f3cc33e5
+  - enabled: 1
+    path: Assets/Scenes/03.Main_VR.unity
+    guid: c18db557ccae62d43a21226326778282
+  - enabled: 1
+    path: Assets/Scenes/04.GameOver.unity
+    guid: 316b1500fade3d143b8a36f81f07ca65
+  m_configObjects: {}

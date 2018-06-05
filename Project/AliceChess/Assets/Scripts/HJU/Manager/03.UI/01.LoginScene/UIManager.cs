@@ -1,30 +1,29 @@
-﻿using UniRx;
-using Network;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+
+using UniRx;
+using Utility;
+using Network;
 
 namespace Manager.LoginScene
 {
-    public class UIManager : Manager
+    public class UIManager : UIBehaviour
     {
-        private GameObject gameManager;
         private InputField playerName;
         private Button playButton;
-
-        public string GetPlayerName() => (playerName.text ?? $"User:{Random.Range(0, 9999)}");
+        private Toggle playOnVR;
 
         private void Start()
         {
             FindObjects();
+            SetOnClick();
         }
 
         private void FindObjects()
         {
-            gameManager = GameObject.Find("GameManager");
-            playerName = GameObject.Find("PlayerName")?.GetComponent<InputField>();
-            playButton = GameObject.Find("PlayButton")?.GetComponent<Button>();
-
-            SetOnClick();
+            playerName = FindComponent<InputField>("PlayerNameField");
+            playButton = FindComponent<Button>("JoinLobbyButton");
+            playOnVR = FindComponent<Toggle>("PlayOnVR");
         }
 
         private void SetOnClick()
@@ -33,9 +32,21 @@ namespace Manager.LoginScene
                 .AsObservable()
                 .Subscribe(x =>
                 {
+                    SavePlayerName();
                     gameManager.GetComponent<NetworkManager>().JoinLobby();
-                    gameManager.GetComponent<SceneManager>().LoadScene(SceneManager.SceneName.lobbyScene);
+                    LoadScene(playOnVR.isOn);
                 });
+        }
+
+        private void SavePlayerName()
+        {
+            DataManager.playerName = playerName.text;
+        }
+
+        private void LoadScene(bool isVR)
+        {
+            DataManager.isVR = isVR;
+            LoadScene(DataManager.SceneName.lobbyScene);
         }
     }
 }
