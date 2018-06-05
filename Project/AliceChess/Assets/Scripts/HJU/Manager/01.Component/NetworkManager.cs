@@ -65,7 +65,7 @@ namespace Network
             if (PhotonNetwork.isMasterClient)
             {
                 Debug.Log("Client : MasterClient");
-                DataManager.MyColor = DataManager.Team.White;
+                DataManager.MyTeam = DataManager.Team.White;
 
                 photonInstantiateManager.InstantiateWhite();
                 cameraTransform.rotation = DataManager.GameCamera.whiteRotation;
@@ -73,7 +73,7 @@ namespace Network
             else
             {
                 Debug.Log("Client : GuestClient");
-                DataManager.MyColor = DataManager.Team.Black;
+                DataManager.MyTeam = DataManager.Team.Black;
 
                 photonInstantiateManager.InstantiateBlack();
                 cameraTransform.rotation = DataManager.GameCamera.blackRotation;

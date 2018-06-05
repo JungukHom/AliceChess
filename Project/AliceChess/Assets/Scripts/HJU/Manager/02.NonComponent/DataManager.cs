@@ -8,7 +8,7 @@ namespace Utility
 
         public static bool isVR = false;
         public static string playerName = "NoName";
-        public static Team MyColor { get; set; } = Team.None;
+        public static Team MyTeam { get; set; } = Team.None;
         
         public struct Time
         {

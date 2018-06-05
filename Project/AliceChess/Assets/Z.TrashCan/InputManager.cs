@@ -17,7 +17,7 @@ namespace Manager
 
         private void Start()
         {
-            MyColor = DataManager.MyColor;
+            MyColor = DataManager.MyTeam;
         }
 
         private void Update()

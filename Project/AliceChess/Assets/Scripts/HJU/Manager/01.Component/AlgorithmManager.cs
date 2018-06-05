@@ -7,14 +7,14 @@ namespace Manager
 {
     public class AlgorithmManager : Manager
     {
-        ChessPieceState pieceState;
-        BoardStateManager boardManager;
-        float distance = DataManager.ChessPieceInfo.distance;
+        private ChessPieceState pieceState;
+        private BoardStateManager boardManager;
+        private readonly float distance = DataManager.ChessPieceInfo.distance;
 
-        int min = DataManager.ChessBoardInfo.chessBoardMinimum;
-        int max = DataManager.ChessBoardInfo.chessBoardMaximum;
+        private readonly int min = DataManager.ChessBoardInfo.chessBoardMinimum;
+        private readonly int max = DataManager.ChessBoardInfo.chessBoardMaximum;
 
-        DataManager.Team currentTeam;
+        private DataManager.Team currentTeam;
 
         private void Start()
         {
@@ -214,7 +214,6 @@ namespace Manager
                 {
                     for (int i = zPos - 1; i <= max; i--)
                     {
-                        Debug.Log($"rook//down// xPos : {xPos}, i : {i}");
                         ChessPieceInformation manager = board[xPos, i];
                         Vector2 tempResult = new Vector2(xPos, i);
                         if (manager.PieceName.Equals(DataManager.PieceName.None))
@@ -280,11 +279,9 @@ namespace Manager
                         if (manager.PieceName == DataManager.PieceName.None)
                         {
                             result.Add(tempResult);
-                            Debug.Log($"// rook, right // first if");
                         }
                         else
                         {
-                            Debug.Log($"// rook, right // first else");
                             if (currentTeam != manager.Team)
                             {
                                 result.Add(tempResult);

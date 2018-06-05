@@ -67,9 +67,9 @@
     <Compile Include="Assets\Scripts\HJU\Manager\01.Component\GameManager.cs" />
     <Compile Include="Assets\Scripts\HJU\Manager\01.Component\InputManager_PC.cs" />
     <Compile Include="Assets\Scripts\HJU\Manager\01.Component\InputSender_PC.cs" />
-    <Compile Include="Assets\Scripts\HJU\Manager\01.Component\LatticeManager.cs" />
     <Compile Include="Assets\Scripts\HJU\Manager\01.Component\NetworkManager.cs" />
     <Compile Include="Assets\Scripts\HJU\Manager\01.Component\PhotonInstantiateManager.cs" />
+    <Compile Include="Assets\Scripts\HJU\Manager\01.Component\PositionManager.cs" />
     <Compile Include="Assets\Scripts\HJU\Manager\02.NonComponent\ChessPieceInformation.cs" />
     <Compile Include="Assets\Scripts\HJU\Manager\02.NonComponent\DataManager.cs" />
     <Compile Include="Assets\Scripts\HJU\Manager\03.UI\01.LoginScene\UIManager.cs" />
@@ -466,6 +466,7 @@
     <Compile Include="Assets\Utilities\UniRX\Plugins\UniRx\Scripts\UnityWinRTBridge\Thread.cs" />
     <Compile Include="Assets\Utilities\UniRX\Plugins\UniRx\Scripts\UnityWinRTBridge\ThreadPoolScheduler_UnityWinRT.cs" />
     <Compile Include="Assets\Z.TrashCan\InputManager.cs" />
+    <Compile Include="Assets\Z.TrashCan\MoveAnimation.cs" />
     <Compile Include="Assets\Z.TrashCan\ParticleManager.cs" />
     <Compile Include="Assets\Z.TrashCan\ParticleScript.cs" />
     <Compile Include="Assets\Z.TrashCan\Wrapper\PhotonObject.cs" />

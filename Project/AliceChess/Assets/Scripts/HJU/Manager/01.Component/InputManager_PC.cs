@@ -13,21 +13,34 @@ namespace Manager
         private RaycastHit hit;
         private GameObject currentObject = null;
 
+        private AlgorithmManager algorithmManager;
+        private PositionManager positionManager;
+
         private List<GameObject> particles = new List<GameObject>();
+
+        private void Start()
+        {
+            algorithmManager = GetOrCreateManager<AlgorithmManager>();
+            positionManager = GetOrCreateManager<PositionManager>();
+        }
 
         public void SetCurrentObject(GameObject currentObject)
         {
-            Debug.Log($"SetCurrentObject : {currentObject.name}");
-            if (currentObject.CompareTag(Utility.DataManager.Tag.chessPiece))
+            if (currentObject.CompareTag(DataManager.Tag.chessPiece))
             {
                 if (this.currentObject?.name != currentObject.name)
                 {
                     RemoveAllPositions();
                     this.currentObject = currentObject;
-                    ShowAvailablePositions();
+
+                    ChessPieceState pieceState = currentObject.GetComponent<ChessPieceState>();
+                    List<Vector2> availablePosition = algorithmManager.GetList(pieceState, DataManager.MyTeam);
+                    
+
+                    ShowAvailablePositions(availablePosition);
                 }
             }
-            else if (currentObject.CompareTag(Utility.DataManager.Tag.positionParticle))
+            else if (currentObject.CompareTag(DataManager.Tag.positionParticle))
             {
                 Debug.Log(currentObject.transform.position);
                 RemoveAllPositions();
@@ -40,16 +53,26 @@ namespace Manager
             }
         }
 
-        private void ShowAvailablePositions()
+        private void ShowAvailablePositions(List<Vector2> positions)
         {
             // 갈 수 있는 위치를 받아와 파티클을 생성
             Vector3 curPos = currentObject.transform.position;
-            for (int i = 1; i < 4; i++)
+            for (int i = 0; i < positions.Count; i++)
             {
-                // throw new System.NotImplementedException();
-                GameObject particle = Instantiate(this.particle, new Vector3(curPos.x, curPos.y, curPos.z + -i * 0.06f), Quaternion.identity);
+                Vector3 myPosition = positionManager.ToRealPosition(positions[i].x, positions[i].y);
+
+                Quaternion rotation;
+                if (DataManager.MyTeam == DataManager.Team.Black)
+                {
+                    rotation = DataManager.ChessPieceInfo.blackRotation;
+                }
+                else
+                {
+                    rotation = DataManager.ChessPieceInfo.whiteRotation;
+                }
+                GameObject particle = Instantiate(this.particle, myPosition, rotation);
+
                 particle.AddComponent<InputSender_PC>();
-                // GameObject particle = Instantiate(this.particle, new Vector3(curPos.x, 0, curPos.y + i * 1.5f), Quaternion.identity);
                 particles.Add(particle);
             }
         }
@@ -74,7 +97,7 @@ namespace Manager
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.gameObject.CompareTag("ChessPiece"))
+                if (hit.collider.gameObject.CompareTag(DataManager.Tag.chessPiece))
                 {
                     result = hit.collider.gameObject;
                 }

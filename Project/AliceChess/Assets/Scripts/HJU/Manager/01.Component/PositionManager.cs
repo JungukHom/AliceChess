@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Manager
 {
-    public class LatticeManager : Manager
+    public class PositionManager : Manager
     {
         private float distance;
         private float halfDistance;
@@ -31,6 +31,18 @@ namespace Manager
         public Vector3 GetPosition(float x, float y, float z)
         {
             return new Vector3(GetX(x), DataManager.ChessBoardInfo.startHeight, GetZ(z));
+        }
+
+        public Vector3 ToRealPosition(float x, float z)
+        {
+            float distance = DataManager.ChessPieceInfo.distance;
+            return new Vector3(x * distance, DataManager.ChessBoardInfo.startHeight, z * distance);
+        }
+
+        public Vector3 ToNormalPosition(float x, float y, float z)
+        {
+            float distance = DataManager.ChessPieceInfo.distance;
+            return new Vector3(x / distance, DataManager.ChessBoardInfo.startHeight, z / distance);
         }
 
         private float GetX(float position)
